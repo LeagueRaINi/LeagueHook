@@ -93,6 +93,8 @@
   <ItemGroup>
     <ClInclude Include="DeviceHandler.h" />
     <ClInclude Include="FNV-1A.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameStateInstance.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hooks.h" />
     <ClInclude Include="ImGui\Directx9\imgui_impl_dx9.h" />

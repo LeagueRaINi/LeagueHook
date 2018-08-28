@@ -63,7 +63,7 @@ auto Logger::DetachConsole() -> void
 	if ( !_console_out || !_console_err || !_console_in )
 		return;
 
-	LI( FreeConsole );
+	LI( FreeConsole )();
 
 	if ( _console_o_out )
 		LI( SetStdHandle )( STD_OUTPUT_HANDLE, _console_o_out );

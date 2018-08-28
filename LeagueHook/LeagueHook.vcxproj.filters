@@ -76,9 +76,6 @@
     <Filter Include="Math\Vector">
       <UniqueIdentifier>{26bd77c1-2cd9-4548-af2f-0d2c48d418e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDK\Structs">
-      <UniqueIdentifier>{13314659-da23-4c1a-9dd3-c64f2aced7d5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="InputManager">
       <UniqueIdentifier>{afd5c4ce-6fb6-4543-9cb6-145b33d2f492}</UniqueIdentifier>
     </Filter>
@@ -90,6 +87,9 @@
     </Filter>
     <Filter Include="WinApi">
       <UniqueIdentifier>{92605a50-24fb-470e-a16a-d9b66110dc9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Classes">
+      <UniqueIdentifier>{6780bc71-8d56-42c3-a2ef-90be19f37cba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,12 +123,6 @@
     <ClInclude Include="Hooks.h">
       <Filter>SDK\Hooks</Filter>
     </ClInclude>
-    <ClInclude Include="R3DRenderer.h">
-      <Filter>SDK\Structs</Filter>
-    </ClInclude>
-    <ClInclude Include="DeviceHandler.h">
-      <Filter>SDK\Structs</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>InputManager</Filter>
     </ClInclude>
@@ -155,6 +149,18 @@
     </ClInclude>
     <ClInclude Include="WinApi.h">
       <Filter>WinApi</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceHandler.h">
+      <Filter>SDK\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateInstance.h">
+      <Filter>SDK\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="R3DRenderer.h">
+      <Filter>SDK\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>SDK\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

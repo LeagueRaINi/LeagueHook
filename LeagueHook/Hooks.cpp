@@ -2,9 +2,11 @@
 #include "SDK.h"
 #include "VMTHook.h"
 #include "Globals.h"
+#include "Math.h"
 
 #include "ImGui/imgui.h"
 #include "ImGui/Directx9/imgui_impl_dx9.h"
+#include "ImGui/imgui_internal.h"
 
 std::unique_ptr<VMTHook> _d3d9_hook;
 
@@ -52,19 +54,58 @@ HRESULT STDMETHODCALLTYPE Present( IDirect3DDevice9* thisptr, const RECT* src, c
 
 		init = true;
 	}
-	else if ( init && thisptr && Globals::ShowMenu )
+	else if ( init && thisptr )
 	{
 		ImGui_ImplDX9_NewFrame();
 
-		ImGui::SetNextWindowSize( ImVec2( 600, 350 ), ImGuiCond_Once );
-		ImGui::SetNextWindowPosCenter( ImGuiCond_Once );
+		static auto draw_hovered_obj = false;
+		static auto draw_hovered_obj_name = false;
 
-		if ( ImGui::Begin( "Hello from ImGui!", nullptr, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoCollapse ) )
+		if ( Globals::ShowMenu )
 		{
-			// TODO:
+			ImGui::SetNextWindowSize( ImVec2( 600, 350 ), ImGuiCond_Once );
+			ImGui::SetNextWindowPosCenter( ImGuiCond_Once );
+
+			if ( ImGui::Begin( "Hello from ImGui!", nullptr, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoCollapse ) )
+			{
+				ImGui::Checkbox( "Draw Hovered Object", &draw_hovered_obj );
+
+				if ( draw_hovered_obj )
+					ImGui::Checkbox( "- Name", &draw_hovered_obj_name);
+
+				ImGui::End();
+			}
+		}
+
+		ImGui::PushStyleColor( ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.0f ) );
+
+		if ( ImGui::Begin( "##overlay", nullptr, ImVec2( 0.0f, 0.0f ), 0.0f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoInputs ) )
+		{
+			ImGui::SetWindowPos( ImVec2( 0.0f, 0.0f ), ImGuiSetCond_Always );
+			ImGui::SetWindowSize( ImVec2( ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y ), ImGuiSetCond_Always );
+
+			auto draw_list = ImGui::GetCurrentWindow()->DrawList;
+
+			if ( draw_hovered_obj )
+			{
+				auto hovered_obj = g_GameStateInstance->HoveredObject;
+				if ( hovered_obj != nullptr )
+				{
+					auto cursor_w2s = Math::WorldToScreen( hovered_obj->WorldPosition );
+
+					draw_list->AddCircle( ImVec2( cursor_w2s.x, cursor_w2s.y ), 25, ImColor( 255, 5, 100, 255 ), 100, 2 );
+
+					if ( draw_hovered_obj_name )
+						draw_list->AddText( ImVec2( cursor_w2s.x + 35, cursor_w2s.y - 5 ), ImColor( 255, 255, 100, 255 ), hovered_obj->ObjectName );
+				}
+			}
+
+			draw_list->PushClipRectFullScreen();
 
 			ImGui::End();
 		}
+
+		ImGui::PopStyleColor();
 
 		ImGui::Render();
 	}

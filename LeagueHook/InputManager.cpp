@@ -79,7 +79,7 @@ InputManager::InputManager( IDirect3DDevice9* device )
 	}
 
 	_target_window = params.hFocusWindow;
-	_old_wnd_proc = SetWindowLongPtr( _target_window, GWLP_WNDPROC, LONG_PTR( WndProc ) );
+	_old_wnd_proc = LI( SetWindowLongPtrA )( _target_window, GWLP_WNDPROC, LONG_PTR( WndProc ) );
 
 	if ( _old_wnd_proc )
 		Globals::Log->LogDebug( "hooked WndProc" );
@@ -90,7 +90,7 @@ InputManager::InputManager( IDirect3DDevice9* device )
 InputManager::~InputManager()
 {
 	if ( _old_wnd_proc )
-		SetWindowLongPtr( _target_window, GWLP_WNDPROC, _old_wnd_proc );
+		LI( SetWindowLongPtrA )( _target_window, GWLP_WNDPROC, _old_wnd_proc );
 
 	_old_wnd_proc = 0;
 	_target_window = NULL;
@@ -141,7 +141,7 @@ auto WINAPI InputManager::WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lP
 {
 	Globals::Input->ProcessMessage( msg, wParam, lParam );
 
-	// TODO:
+	// TODO: only capture input when we need it (menu opened
 	ImGui_ImplDX9_WndProcHandler( hWnd, msg, wParam, lParam );
 
 	return LI( CallWindowProcW )( WNDPROC( Globals::Input->GetOldWndProc() ), hWnd, msg, wParam, lParam );
