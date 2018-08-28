@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Entry.cpp" />
+    <ClCompile Include="Logger.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Globals</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="VMTHook.cpp">
+      <Filter>VMTHook</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Math\Vector2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks.cpp">
+      <Filter>SDK\Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\Directx9\imgui_impl_dx9.cpp">
+      <Filter>ImGui\Directx9</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="WinApi.cpp">
+      <Filter>WinApi</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{bb2ed341-6898-4217-8fb5-77bbeed37c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{62045aa5-de7f-4beb-8496-697bc069f9fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hashing">
+      <UniqueIdentifier>{eb0b4f3c-bcfb-4e6f-bf6d-33b7d6fdd2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Globals">
+      <UniqueIdentifier>{53ee6e18-a171-47d5-893e-94d57172107e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{a1f3c07c-f4d7-4b05-8365-30dcce61cf61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Hooks">
+      <UniqueIdentifier>{bf3a0870-f1b2-4a37-88b3-e0fbdb9dd989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VMTHook">
+      <UniqueIdentifier>{0ea2e4bd-b58c-4ef1-ad96-f598a0f5a727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{9b601fc5-4caa-4ec8-be52-8164b57e247c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vector2D">
+      <UniqueIdentifier>{7babb018-4af8-478a-b986-3744c0d206cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vector">
+      <UniqueIdentifier>{26bd77c1-2cd9-4548-af2f-0d2c48d418e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Structs">
+      <UniqueIdentifier>{13314659-da23-4c1a-9dd3-c64f2aced7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputManager">
+      <UniqueIdentifier>{afd5c4ce-6fb6-4543-9cb6-145b33d2f492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{5a91a16a-ba50-4094-ae61-a0b37deb28ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui\Directx9">
+      <UniqueIdentifier>{96603b82-9f31-4db7-8a6c-351ebef5ef5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WinApi">
+      <UniqueIdentifier>{92605a50-24fb-470e-a16a-d9b66110dc9e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Logger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="FNV-1A.h">
+      <Filter>Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="VMTHook.h">
+      <Filter>VMTHook</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Math\Vector2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Hooks.h">
+      <Filter>SDK\Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="R3DRenderer.h">
+      <Filter>SDK\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceHandler.h">
+      <Filter>SDK\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Directx9\imgui_impl_dx9.h">
+      <Filter>ImGui\Directx9</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\stb_rect_pack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\stb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\stb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="WinApi.h">
+      <Filter>WinApi</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
