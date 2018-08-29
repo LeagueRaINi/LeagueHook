@@ -6,5 +6,5 @@
 class Math
 {
 public:
-	static auto WorldToScreen(D3DXVECTOR3 world_pos) -> D3DXVECTOR2;
+	static auto WorldToScreen( D3DXVECTOR3 world_pos, D3DXVECTOR3* screen_pos ) -> bool;
 };

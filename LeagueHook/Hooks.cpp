@@ -82,7 +82,7 @@ HRESULT STDMETHODCALLTYPE Present( IDirect3DDevice9* thisptr, const RECT* src, c
 		if ( ImGui::Begin( "##overlay", nullptr, ImVec2( 0.0f, 0.0f ), 0.0f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoInputs ) )
 		{
 			ImGui::SetWindowPos( ImVec2( 0.0f, 0.0f ), ImGuiSetCond_Always );
-			ImGui::SetWindowSize( ImVec2( ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y ), ImGuiSetCond_Always );
+			ImGui::SetWindowSize( ImGui::GetIO().DisplaySize, ImGuiSetCond_Always );
 
 			auto draw_list = ImGui::GetCurrentWindow()->DrawList;
 
@@ -91,12 +91,14 @@ HRESULT STDMETHODCALLTYPE Present( IDirect3DDevice9* thisptr, const RECT* src, c
 				auto hovered_obj = g_GameStateInstance->HoveredObject;
 				if ( hovered_obj != nullptr )
 				{
-					auto cursor_w2s = Math::WorldToScreen( hovered_obj->WorldPosition );
+					auto* cursor_w2s = new D3DXVECTOR3();
+					if ( Math::WorldToScreen( hovered_obj->WorldPosition, cursor_w2s ) )
+					{
+						draw_list->AddCircle( ImVec2( cursor_w2s->x, cursor_w2s->y ), 25, ImColor( 255, 5, 100, 255 ), 100, 2 );
 
-					draw_list->AddCircle( ImVec2( cursor_w2s.x, cursor_w2s.y ), 25, ImColor( 255, 5, 100, 255 ), 100, 2 );
-
-					if ( draw_hovered_obj_name )
-						draw_list->AddText( ImVec2( cursor_w2s.x + 35, cursor_w2s.y - 5 ), ImColor( 255, 255, 100, 255 ), hovered_obj->ObjectName );
+						if ( draw_hovered_obj_name )
+							draw_list->AddText( ImVec2( cursor_w2s->x + 35, cursor_w2s->y - 5 ), ImColor( 255, 255, 100, 255 ), hovered_obj->ObjectName );
+					}
 				}
 			}
 

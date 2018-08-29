@@ -1,26 +1,26 @@
 #include "Math.h"
 #include "SDK.h"
 
-auto Math::WorldToScreen(D3DXVECTOR3 world_pos) -> D3DXVECTOR2
+auto Math::WorldToScreen( D3DXVECTOR3 world_pos, D3DXVECTOR3* screen_pos ) -> bool
 {
-	const auto viewMatrix = &g_Renderer->ViewMatrix;
-	const auto projection_matrix = &g_Renderer->ProjectionMatrix;
+	if ( g_Renderer == nullptr )
+		return false;
 
-	auto tmp = &D3DXVECTOR4(world_pos.x, world_pos.y, world_pos.z, 1);
+	auto device_handler = g_Renderer->DeviceHandler;
+	if ( device_handler == nullptr )
+		return false;
 
-	D3DXVec4Transform(tmp, tmp, viewMatrix);
-	D3DXVec4Transform(tmp, tmp, projection_matrix);
+	auto device = device_handler->Direct3DDevice9;
+	if ( device == nullptr )
+		return false;
 
-	tmp->y *= -1;
+	D3DVIEWPORT9 viewport;
+	device->GetViewport( &viewport );
 
-	tmp->x /= tmp->w;
-	tmp->y /= tmp->w;
+	D3DXMATRIX identity;
+	D3DXMatrixIdentity( &identity );
 
-	tmp->x += 1;
-	tmp->y += 1;
+	D3DXVec3Project( screen_pos, &world_pos, &viewport, &g_Renderer->ProjectionMatrix, &g_Renderer->ViewMatrix, &identity );
 
-	tmp->x *= (float)g_Renderer->ScreenResolutionX / 2;
-	tmp->y *= (float)g_Renderer->ScreenResolutionY / 2;
-
-	return {tmp->x, tmp->y};
+	return true;
 }
